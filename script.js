@@ -1,1053 +1,888 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.login-container {
-    display: flex;
-    min-height: 100vh;
-}
-
-.login-left {
-    flex: 1;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    text-align: center;
-}
-
-.login-left h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.login-left p {
-    font-size: 1.1rem;
-    max-width: 80%;
-}
-
-.login-right {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
-
-.login-form {
-    width: 80%;
-    max-width: 400px;
-}
-
-.login-form h2 {
-    margin-bottom: 1.5rem;
-    color: #333;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #555;
-}
-
-.form-group input, 
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.btn-login, .btn-signup, .btn-back {
-    width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-bottom: 1rem;
-    transition: background-color 0.3s;
-}
-
-.btn-login {
-    background-color: #6e8efb;
-    color: white;
-}
-
-.btn-login:hover {
-    background-color: #5a7bf0;
-}
-
-.btn-signup {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-.btn-signup:hover {
-    background-color: #e0e0e0;
-}
-
-.btn-back {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-.btn-back:hover {
-    background-color: #e0e0e0;
-}
-
-.social-login {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.social-login p {
-    margin-bottom: 1rem;
-    color: #777;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.social-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    background-color: #f0f0f0;
-    color: #555;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.social-btn:hover {
-    background-color: #e0e0e0;
-}
-
-.baby-animation {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin-bottom: 2rem;
-}
-
-.pacifier {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: #ff9ff3;
-    border-radius: 50%;
-    top: 0;
-    left: 60px;
-    z-index: 2;
-    animation: float 3s ease-in-out infinite;
-}
-
-.baby-face {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    background-color: #feca57;
-    border-radius: 50%;
-    top: 30px;
-    left: 15px;
-}
-
-.eyes {
-    display: flex;
-    justify-content: space-between;
-    width: 70px;
-    position: absolute;
-    top: 40px;
-    left: 25px;
-}
-
-.eye {
-    width: 20px;
-    height: 20px;
-    background-color: #333;
-    border-radius: 50%;
-    animation: blink 4s infinite;
-}
-
-.mouth {
-    position: absolute;
-    width: 40px;
-    height: 20px;
-    border-bottom: 3px solid #333;
-    border-radius: 0 0 20px 20px;
-    top: 70px;
-    left: 40px;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes blink {
-    0%, 45%, 55%, 100% {
-        height: 20px;
-    }
-    50% {
-        height: 5px;
-    }
-}
-
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-}
-
-.header-left h1 {
-    margin-right: 2rem;
-    color: #6e8efb;
-}
-
-.header-left h1 i {
-    margin-right: 0.5rem;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin-right: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-nav ul li:hover {
-    background-color: #f0f0f0;
-}
-
-nav ul li.active {
-    background-color: #e6f0ff;
-    color: #6e8efb;
-}
-
-nav ul li i {
-    margin-right: 0.5rem;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-}
-
-.user-profile {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 0.5rem;
-}
-
-.username {
-    margin-right: 0.5rem;
-    font-weight: 600;
-}
-
-main {
-    flex: 1;
-    padding: 2rem;
-    background-color: #f5f7fa;
-}
-
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-.welcome-banner {
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-}
-
-.welcome-banner h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.stat-card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.stat-card h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.stat-value {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.btn-add {
-    background-color: #f0f0f0;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 0.9rem;
-}
-
-.btn-add:hover {
-    background-color: #e0e0e0;
-}
-
-.btn-add i {
-    margin-right: 0.5rem;
-}
-
-.feeding {
-    border-top: 4px solid #6e8efb;
-}
-
-.sleep {
-    border-top: 4px solid #a777e3;
-}
-
-.diaper {
-    border-top: 4px solid #feca57;
-}
-
-.growth {
-    border-top: 4px solid #1dd1a1;
-}
-
-.growth-bar {
-    height: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin-bottom: 0.5rem;
-}
-
-.progress {
-    height: 100%;
-    border-radius: 5px;
-    background-color: #1dd1a1;
-}
-
-.charts-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.chart-card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.chart-card h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-.nutrition-actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.btn-primary {
-    background-color: #6e8efb;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-.btn-primary:hover {
-    background-color: #5a7bf0;
-}
-
-.btn-primary i {
-    margin-right: 0.5rem;
-}
-
-.nutrition-history {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.nutrition-history h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 0.8rem;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-}
-
-th {
-    font-weight: 600;
-    color: #555;
-}
-
-td i {
-    margin-right: 1rem;
-    cursor: pointer;
-    color: #777;
-}
-
-td i:hover {
-    color: #333;
-}
-
-.sleep-actions {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.sleep-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.sleep-stat {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.sleep-stat h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.sleep-stat .stat-value {
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.sleep-history {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.sleep-history h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.timeline {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 7px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: #eee;
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 1.5rem;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -2rem;
-    top: 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #a777e3;
-}
-
-.timeline-time {
-    font-weight: 600;
-    color: #555;
-    margin-bottom: 0.5rem;
-}
-
-.timeline-content {
-    background-color: #f9f9f9;
-    padding: 1rem;
-    border-radius: 4px;
-}
-
-.timeline-content h4 {
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.timeline-actions {
-    margin-top: 1rem;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.timeline-actions button {
-    padding: 0.3rem 0.8rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8rem;
-}
-
-.btn-edit {
-    background-color: #6e8efb;
-    color: white;
-}
-
-.btn-delete {
-    background-color: #ff6b6b;
-    color: white;
-}
-
-.growth-metrics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.metric-card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    text-align: center;
-}
-
-.metric-card h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.metric-value {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.metric-percentile {
-    color: #777;
-    font-size: 0.9rem;
-}
-
-.growth-charts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.chart-container {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.chart-container h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.milestones {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.milestones h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.milestone-progress {
-    margin-bottom: 1.5rem;
-}
-
-.progress-bar {
-    height: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin-bottom: 0.5rem;
-}
-
-.progress-text {
-    font-size: 0.9rem;
-    color: #777;
-}
-
-.milestone-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-}
-
-.milestone-item {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: 4px;
-}
-
-.milestone-item i {
-    margin-right: 0.5rem;
-}
-
-.milestone-item.completed {
-    background-color: #e6f7f0;
-    color: #1dd1a1;
-}
-
-.milestone-item.in-progress {
-    background-color: #fff8e6;
-    color: #feca57;
-}
-
-.milestone-item.pending {
-    background-color: #f0f0f0;
-    color: #777;
-}
-
-.contact-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.contact-info {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.contact-info h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.contact-info p {
-    margin-bottom: 1.5rem;
-    color: #777;
-}
-
-.contact-method {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.contact-method i {
-    margin-right: 1rem;
-    color: #6e8efb;
-    width: 20px;
-    text-align: center;
-}
-
-.social-links {
-    margin-top: 2rem;
-}
-
-.social-links h4 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.social-icons {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.social-icons a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #f0f0f0;
-    color: #555;
-    transition: background-color 0.3s;
-}
-
-.social-icons a:hover {
-    background-color: #e0e0e0;
-}
-
-.contact-form {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.contact-form h3 {
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.contact-form textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    resize: vertical;
-}
-
-.btn-submit {
-    background-color: #6e8efb;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.btn-submit:hover {
-    background-color: #5a7bf0;
-}
-
-.chatbot-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 350px;
-    height: 500px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    z-index: 1000;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.chatbot-widget.active {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.chatbot-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
-    border-radius: 10px 10px 0 0;
-}
-
-.chatbot-avatar {
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1rem;
-    color: #6e8efb;
-    font-size: 1.2rem;
-}
-
-.chatbot-header h3 {
-    flex: 1;
-    font-size: 1rem;
-}
-
-.chatbot-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-.chatbot-messages {
-    flex: 1;
-    padding: 1rem;
-    overflow-y: auto;
-}
-
-.message {
-    max-width: 80%;
-    margin-bottom: 1rem;
-    padding: 0.8rem;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-.bot-message {
-    background-color: #f0f0f0;
-    color: #333;
-    align-self: flex-start;
-    margin-right: auto;
-}
-
-.user-message {
-    background-color: #6e8efb;
-    color: white;
-    align-self: flex-end;
-    margin-left: auto;
-}
-
-.chatbot-input {
-    display: flex;
-    padding: 1rem;
-    border-top: 1px solid #eee;
-}
-
-.chatbot-input input {
-    flex: 1;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    outline: none;
-}
-
-.chatbot-input button {
-    background: none;
-    border: none;
-    color: #6e8efb;
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-    cursor: pointer;
-}
-
-.chatbot-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1001;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-}
-
-.close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #777;
-}
-
-.modal h2 {
-    margin-bottom: 1.5rem;
-    color: #555;
-}
-@media (max-width: 768px) {
-    .login-container {
-        flex-direction: column;
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const loginPage = document.getElementById('loginPage');
+    const dashboard = document.getElementById('dashboard');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const showSignupBtn = document.getElementById('showSignup');
+    const showLoginBtn = document.getElementById('showLogin');
+    const navLinks = document.querySelectorAll('nav ul li');
+    const pages = document.querySelectorAll('.page');
+    const chatbotWidget = document.getElementById('chatbotWidget');
+    const toggleChatbotBtn = document.getElementById('toggleChatbot');
+    const closeChatbotBtn = document.getElementById('closeChatbot');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const sendMessageBtn = document.getElementById('sendMessage');
+    
+    // Modal Elements
+    const bottleModal = document.getElementById('bottleModal');
+    const solidFoodModal = document.getElementById('solidFoodModal');
+    const sleepModal = document.getElementById('sleepModal');
+    const bottleForm = document.getElementById('bottleForm');
+    const solidFoodForm = document.getElementById('solidFoodForm');
+    const sleepForm = document.getElementById('sleepForm');
+    const closeModalBtns = document.querySelectorAll('.close-modal');
+    
+    // Button Elements
+    const addBottleBtn = document.getElementById('addBottleBtn');
+    const addSolidFoodBtn = document.getElementById('addSolidFoodBtn');
+    const addVitaminBtn = document.getElementById('addVitaminBtn');
+    const startNapBtn = document.getElementById('startNapBtn');
+    const startNightSleepBtn = document.getElementById('startNightSleepBtn');
+    const manualSleepEntryBtn = document.getElementById('manualSleepEntryBtn');
+    const addFeedingBtn = document.getElementById('addFeedingBtn');
+    const addSleepBtn = document.getElementById('addSleepBtn');
+    
+    // Data Display Elements
+    const nutritionTableBody = document.getElementById('nutritionTableBody');
+    const sleepTimeline = document.getElementById('sleepTimeline');
+    const lastFeedingTime = document.getElementById('lastFeedingTime');
+    const lastNapTime = document.getElementById('lastNapTime');
+    const todaySleep = document.getElementById('todaySleep');
+    const avgSleep = document.getElementById('avgSleep');
+    const lastNapDuration = document.getElementById('lastNapDuration');
+    
+    // Data Storage
+    let babyData = {
+        name: 'Baby Name',
+        dob: new Date(),
+        feedings: [],
+        solidFoods: [],
+        sleepSessions: [],
+        growthRecords: []
+    };
+    
+    // Chart Instances
+    let feedingChart, sleepChart, weightChart, heightChart;
+    
+    // Initialize the app
+    initApp();
+    
+    function initApp() {
+        // Check if user is logged in
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        
+        if (isLoggedIn) {
+            loginPage.classList.add('hidden');
+            dashboard.classList.remove('hidden');
+            loadBabyData();
+            initCharts();
+            updateDashboardStats();
+        } else {
+            loginPage.classList.remove('hidden');
+            dashboard.classList.add('hidden');
+        }
+        
+        // Load sample data if empty
+        if (babyData.feedings.length === 0 && babyData.sleepSessions.length === 0) {
+            loadSampleData();
+        }
     }
     
-    .login-left, .login-right {
-        flex: none;
-        width: 100%;
+    function loadBabyData() {
+        const savedData = localStorage.getItem('babyData');
+        if (savedData) {
+            babyData = JSON.parse(savedData);
+            // Convert string dates back to Date objects
+            babyData.feedings.forEach(f => f.time = new Date(f.time));
+            babyData.solidFoods.forEach(f => f.time = new Date(f.time));
+            babyData.sleepSessions.forEach(s => {
+                s.startTime = new Date(s.startTime);
+                s.endTime = new Date(s.endTime);
+            });
+            babyData.growthRecords.forEach(g => g.date = new Date(g.date));
+        }
     }
     
-    .login-left {
-        padding: 2rem 1rem;
+    function saveBabyData() {
+        localStorage.setItem('babyData', JSON.stringify(babyData));
     }
     
-    .login-form {
-        width: 90%;
+    function loadSampleData() {
+        // Sample feeding data
+        const now = new Date();
+        const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000);
+        const threeHoursAgo = new Date(now.getTime() - 3 * 60 * 60 * 1000);
+        
+        babyData.feedings = [
+            { id: generateId(), type: 'bottle', time: twoHoursAgo, amount: 180, milkType: 'breast', notes: 'Finished all' },
+            { id: generateId(), type: 'bottle', time: threeHoursAgo, amount: 150, milkType: 'formula', notes: 'Left 20ml' }
+        ];
+        
+        // Sample solid food data
+        const todayLunch = new Date(now);
+        todayLunch.setHours(12, 15, 0, 0);
+        
+        babyData.solidFoods = [
+            { id: generateId(), time: todayLunch, foodType: 'Sweet potatoes', amount: '1/2 cup', reaction: 'liked', notes: 'First time trying' }
+        ];
+        
+        // Sample sleep data
+        const nap1Start = new Date(now);
+        nap1Start.setHours(9, 0, 0, 0);
+        const nap1End = new Date(nap1Start.getTime() + 75 * 60 * 1000);
+        
+        const nap2Start = new Date(now);
+        nap2Start.setHours(13, 30, 0, 0);
+        const nap2End = new Date(nap2Start.getTime() + 90 * 60 * 1000);
+        
+        babyData.sleepSessions = [
+            { id: generateId(), type: 'nap', startTime: nap1Start, endTime: nap1End, quality: 'good', notes: 'Fell asleep quickly' },
+            { id: generateId(), type: 'nap', startTime: nap2Start, endTime: nap2End, quality: 'restless', notes: 'Woke up once but went back to sleep' }
+        ];
+        
+        // Sample growth data
+        babyData.growthRecords = [
+            { id: generateId(), date: new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000), weight: 6.8, height: 65, headCircumference: 42 },
+            { id: generateId(), date: now, weight: 7.5, height: 68, headCircumference: 43 }
+        ];
+        
+        saveBabyData();
     }
     
-    header {
-        flex-direction: column;
-        padding: 1rem;
+    function generateId() {
+        return Math.random().toString(36).substr(2, 9);
     }
     
-    .header-left {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
+    // Login/Signup Functionality
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        localStorage.setItem('isLoggedIn', 'true');
+        loginPage.classList.add('hidden');
+        dashboard.classList.remove('hidden');
+        loadBabyData();
+        initCharts();
+        updateDashboardStats();
+    });
+    
+    signupForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const parentName = document.getElementById('signupName').value;
+        const babyName = document.getElementById('babyName').value;
+        
+        babyData.name = babyName;
+        saveBabyData();
+        
+        localStorage.setItem('isLoggedIn', 'true');
+        loginPage.classList.add('hidden');
+        dashboard.classList.remove('hidden');
+        loadBabyData();
+        initCharts();
+        updateDashboardStats();
+        
+        signupForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+    });
+    
+    showSignupBtn.addEventListener('click', function() {
+        loginForm.classList.add('hidden');
+        signupForm.classList.remove('hidden');
+    });
+    
+    showLoginBtn.addEventListener('click', function() {
+        signupForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+    });
+    
+    // Navigation
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(l => l.classList.remove('active'));
+            pages.forEach(page => page.classList.remove('active'));
+            
+            this.classList.add('active');
+            const pageId = this.getAttribute('data-page') + 'Page';
+            document.getElementById(pageId).classList.add('active');
+            
+            if (pageId === 'dashboardPage') {
+                updateCharts();
+                updateDashboardStats();
+            }
+            
+            if (pageId === 'nutritionPage') {
+                updateNutritionTable();
+            }
+            
+            if (pageId === 'sleepPage') {
+                updateSleepTimeline();
+                updateSleepStats();
+            }
+        });
+    });
+    
+    // Chatbot Functionality
+    toggleChatbotBtn.addEventListener('click', function() {
+        chatbotWidget.classList.toggle('active');
+    });
+    
+    closeChatbotBtn.addEventListener('click', function() {
+        chatbotWidget.classList.remove('active');
+    });
+    
+    function addBotMessage(message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', 'bot-message');
+        messageDiv.innerHTML = `<p>${message}</p>`;
+        chatbotMessages.appendChild(messageDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
     
-    .header-left h1 {
-        margin-bottom: 1rem;
+    function addUserMessage(message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', 'user-message');
+        messageDiv.innerHTML = `<p>${message}</p>`;
+        chatbotMessages.appendChild(messageDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
     
-    nav ul {
-        flex-wrap: wrap;
-        width: 100%;
+    sendMessageBtn.addEventListener('click', function() {
+        const message = chatbotInput.value.trim();
+        if (message) {
+            addUserMessage(message);
+            chatbotInput.value = '';
+            
+            setTimeout(() => {
+                const responses = [
+                    "I can help you track your baby's activities. Try logging a feeding or sleep session!",
+                    "Remember to log your baby's meals and naps for accurate tracking.",
+                    "You can view your baby's growth progress on the Growth page.",
+                    "How is your baby doing today?",
+                    "Don't forget to log diaper changes too!"
+                ];
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                addBotMessage(randomResponse);
+            }, 1000);
+        }
+    });
+    
+    chatbotInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessageBtn.click();
+        }
+    });
+    
+    // Modal Functionality
+    function openModal(modal) {
+        modal.classList.add('active');
     }
     
-    nav ul li {
-        margin-bottom: 0.5rem;
+    function closeModal(modal) {
+        modal.classList.remove('active');
     }
     
-    .header-right {
-        margin-top: 1rem;
-        width: 100%;
-        justify-content: flex-end;
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            closeModal(modal);
+        });
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal')) {
+            closeModal(e.target);
+        }
+    });
+    
+    // Add Bottle Feeding
+    addBottleBtn.addEventListener('click', function() {
+        const bottleTime = document.getElementById('bottleTime');
+        bottleTime.value = new Date().toISOString().slice(0, 16);
+        openModal(bottleModal);
+    });
+    
+    bottleForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const time = new Date(document.getElementById('bottleTime').value);
+        const amount = parseInt(document.getElementById('bottleAmount').value);
+        const milkType = document.getElementById('bottleType').value;
+        const notes = document.getElementById('bottleNotes').value;
+        
+        const newFeeding = {
+            id: generateId(),
+            type: 'bottle',
+            time: time,
+            amount: amount,
+            milkType: milkType,
+            notes: notes
+        };
+        
+        babyData.feedings.push(newFeeding);
+        saveBabyData();
+        
+        updateNutritionTable();
+        updateDashboardStats();
+        updateCharts();
+        
+        this.reset();
+        closeModal(bottleModal);
+    });
+    
+    // Add Solid Food
+    addSolidFoodBtn.addEventListener('click', function() {
+        const foodTime = document.getElementById('foodTime');
+        foodTime.value = new Date().toISOString().slice(0, 16);
+        openModal(solidFoodModal);
+    });
+    
+    solidFoodForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const time = new Date(document.getElementById('foodTime').value);
+        const foodType = document.getElementById('foodType').value;
+        const amount = document.getElementById('foodAmount').value;
+        const reaction = document.getElementById('foodReaction').value;
+        const notes = document.getElementById('foodNotes').value;
+        
+        const newFood = {
+            id: generateId(),
+            time: time,
+            foodType: foodType,
+            amount: amount,
+            reaction: reaction,
+            notes: notes
+        };
+        
+        babyData.solidFoods.push(newFood);
+        saveBabyData();
+        
+        updateNutritionTable();
+        updateDashboardStats();
+        updateCharts();
+        
+        this.reset();
+        closeModal(solidFoodModal);
+    });
+    
+    // Add Sleep Session
+    manualSleepEntryBtn.addEventListener('click', function() {
+        const now = new Date();
+        const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
+        
+        document.getElementById('sleepStart').value = oneHourAgo.toISOString().slice(0, 16);
+        document.getElementById('sleepEnd').value = now.toISOString().slice(0, 16);
+        
+        openModal(sleepModal);
+    });
+    
+    sleepForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const type = document.getElementById('sleepType').value;
+        const startTime = new Date(document.getElementById('sleepStart').value);
+        const endTime = new Date(document.getElementById('sleepEnd').value);
+        const quality = document.getElementById('sleepQuality').value;
+        const notes = document.getElementById('sleepNotes').value;
+        
+        const newSleep = {
+            id: generateId(),
+            type: type,
+            startTime: startTime,
+            endTime: endTime,
+            quality: quality,
+            notes: notes
+        };
+        
+        babyData.sleepSessions.push(newSleep);
+        saveBabyData();
+        
+        updateSleepTimeline();
+        updateSleepStats();
+        updateDashboardStats();
+        updateCharts();
+        
+        this.reset();
+        closeModal(sleepModal);
+    });
+    
+    // Quick add buttons from dashboard
+    addFeedingBtn.addEventListener('click', function() {
+        addBottleBtn.click();
+    });
+    
+    addSleepBtn.addEventListener('click', function() {
+        manualSleepEntryBtn.click();
+    });
+    
+    // Data Display Functions
+    function updateNutritionTable() {
+        nutritionTableBody.innerHTML = '';
+        
+        const allNutrition = [
+            ...babyData.feedings.map(f => ({ ...f, isFeeding: true })),
+            ...babyData.solidFoods.map(f => ({ ...f, isFeeding: false }))
+        ].sort((a, b) => b.time - a.time);
+        
+        allNutrition.forEach(item => {
+            const row = document.createElement('tr');
+            
+            if (item.isFeeding) {
+                row.innerHTML = `
+                    <td>${formatTime(item.time)}</td>
+                    <td>Bottle (${item.milkType})</td>
+                    <td>${item.amount}ml</td>
+                    <td>${item.notes || '-'}</td>
+                    <td>
+                        <i class="fas fa-edit" data-id="${item.id}" data-type="feeding"></i>
+                        <i class="fas fa-trash" data-id="${item.id}" data-type="feeding"></i>
+                    </td>
+                `;
+            } else {
+                row.innerHTML = `
+                    <td>${formatTime(item.time)}</td>
+                    <td>${item.foodType}</td>
+                    <td>${item.amount}</td>
+                    <td>${getReactionEmoji(item.reaction)} ${item.notes || '-'}</td>
+                    <td>
+                        <i class="fas fa-edit" data-id="${item.id}" data-type="solidFood"></i>
+                        <i class="fas fa-trash" data-id="${item.id}" data-type="solidFood"></i>
+                    </td>
+                `;
+            }
+            
+            nutritionTableBody.appendChild(row);
+        });
+        
+        document.querySelectorAll('#nutritionTableBody .fa-edit').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const type = this.getAttribute('data-type');
+                editNutritionItem(id, type);
+            });
+        });
+        
+        document.querySelectorAll('#nutritionTableBody .fa-trash').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const type = this.getAttribute('data-type');
+                deleteNutritionItem(id, type);
+            });
+        });
     }
     
-    .stats-grid, .charts-container {
-        grid-template-columns: 1fr;
+    function editNutritionItem(id, type) {
+        if (type === 'feeding') {
+            const feeding = babyData.feedings.find(f => f.id === id);
+            if (feeding) {
+                document.getElementById('bottleTime').value = feeding.time.toISOString().slice(0, 16);
+                document.getElementById('bottleAmount').value = feeding.amount;
+                document.getElementById('bottleType').value = feeding.milkType;
+                document.getElementById('bottleNotes').value = feeding.notes || '';
+                
+                bottleForm.dataset.editId = id;
+                openModal(bottleModal);
+            }
+        } else if (type === 'solidFood') {
+            const food = babyData.solidFoods.find(f => f.id === id);
+            if (food) {
+                document.getElementById('foodTime').value = food.time.toISOString().slice(0, 16);
+                document.getElementById('foodType').value = food.foodType;
+                document.getElementById('foodAmount').value = food.amount;
+                document.getElementById('foodReaction').value = food.reaction;
+                document.getElementById('foodNotes').value = food.notes || '';
+                
+                solidFoodForm.dataset.editId = id;
+                openModal(solidFoodModal);
+            }
+        }
     }
     
-    .nutrition-actions, .sleep-actions {
-        flex-direction: column;
+    function deleteNutritionItem(id, type) {
+        if (confirm('Are you sure you want to delete this item?')) {
+            if (type === 'feeding') {
+                babyData.feedings = babyData.feedings.filter(f => f.id !== id);
+            } else if (type === 'solidFood') {
+                babyData.solidFoods = babyData.solidFoods.filter(f => f.id !== id);
+            }
+            
+            saveBabyData();
+            updateNutritionTable();
+            updateDashboardStats();
+            updateCharts();
+        }
     }
     
-    .chatbot-widget {
-        width: 90%;
-        right: 5%;
+    function updateSleepTimeline() {
+        sleepTimeline.innerHTML = '';
+        
+        const sortedSessions = [...babyData.sleepSessions].sort((a, b) => b.startTime - a.startTime);
+        
+        sortedSessions.forEach(session => {
+            const duration = (session.endTime - session.startTime) / (60 * 1000);
+            const hours = Math.floor(duration / 60);
+            const minutes = Math.floor(duration % 60);
+            
+            const sessionDiv = document.createElement('div');
+            sessionDiv.classList.add('timeline-item');
+            sessionDiv.innerHTML = `
+                <div class="timeline-time">${formatTime(session.startTime)} - ${formatTime(session.endTime)}</div>
+                <div class="timeline-content">
+                    <h4>${session.type === 'nap' ? 'Nap' : 'Night Sleep'}</h4>
+                    <p>Duration: ${hours > 0 ? `${hours} hour${hours !== 1 ? 's' : ''} ` : ''}${minutes} minute${minutes !== 1 ? 's' : ''}</p>
+                    <p>Quality: ${session.quality}</p>
+                    <p>Notes: ${session.notes || 'None'}</p>
+                    <div class="timeline-actions">
+                        <button class="btn-edit" data-id="${session.id}"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="btn-delete" data-id="${session.id}"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>
+            `;
+            
+            sleepTimeline.appendChild(sessionDiv);
+        });
+        
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                editSleepSession(id);
+            });
+        });
+        
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                deleteSleepSession(id);
+            });
+        });
     }
-}
-canvas {
-    width: 100% !important;
-    height: auto !important;
-}
+    
+    function editSleepSession(id) {
+        const session = babyData.sleepSessions.find(s => s.id === id);
+        if (session) {
+            document.getElementById('sleepType').value = session.type;
+            document.getElementById('sleepStart').value = session.startTime.toISOString().slice(0, 16);
+            document.getElementById('sleepEnd').value = session.endTime.toISOString().slice(0, 16);
+            document.getElementById('sleepQuality').value = session.quality;
+            document.getElementById('sleepNotes').value = session.notes || '';
+            
+            sleepForm.dataset.editId = id;
+            openModal(sleepModal);
+        }
+    }
+    
+    function deleteSleepSession(id) {
+        if (confirm('Are you sure you want to delete this sleep session?')) {
+            babyData.sleepSessions = babyData.sleepSessions.filter(s => s.id !== id);
+            saveBabyData();
+            updateSleepTimeline();
+            updateSleepStats();
+            updateDashboardStats();
+            updateCharts();
+        }
+    }
+    
+    function updateDashboardStats() {
+        // Last feeding time
+        if (babyData.feedings.length > 0) {
+            const lastFeeding = babyData.feedings.reduce((latest, current) => 
+                current.time > latest.time ? current : latest
+            );
+            
+            const hoursAgo = Math.floor((new Date() - lastFeeding.time) / (60 * 60 * 1000));
+            const minutesAgo = Math.floor((new Date() - lastFeeding.time) / (60 * 1000) % 60);
+            
+            lastFeedingTime.textContent = 
+                hoursAgo > 0 ? `${hoursAgo} hour${hoursAgo !== 1 ? 's' : ''} ago` : 
+                `${minutesAgo} minute${minutesAgo !== 1 ? 's' : ''} ago`;
+        } else {
+            lastFeedingTime.textContent = 'No data';
+        }
+        
+        // Last nap time
+        const naps = babyData.sleepSessions.filter(s => s.type === 'nap');
+        if (naps.length > 0) {
+            const lastNap = naps.reduce((latest, current) => 
+                current.endTime > latest.endTime ? current : latest
+            );
+            
+            const hoursAgo = Math.floor((new Date() - lastNap.endTime) / (60 * 60 * 1000));
+            const minutesAgo = Math.floor((new Date() - lastNap.endTime) / (60 * 1000) % 60);
+            
+            lastNapTime.textContent = 
+                hoursAgo > 0 ? `${hoursAgo} hour${hoursAgo !== 1 ? 's' : ''} ago` : 
+                `${minutesAgo} minute${minutesAgo !== 1 ? 's' : ''} ago`;
+        } else {
+            lastNapTime.textContent = 'No data';
+        }
+    }
+    
+    function updateSleepStats() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const todaySessions = babyData.sleepSessions.filter(s => 
+            s.endTime >= today && s.type === 'nap'
+        );
+        
+        let todayTotal = 0;
+        todaySessions.forEach(s => {
+            todayTotal += (s.endTime - s.startTime);
+        });
+        
+        const todayHours = Math.floor(todayTotal / (60 * 60 * 1000));
+        const todayMinutes = Math.floor((todayTotal % (60 * 60 * 1000)) / (60 * 1000));
+        
+        todaySleep.textContent = 
+            todayHours > 0 ? `${todayHours} hour${todayHours !== 1 ? 's' : ''} ${todayMinutes} minute${todayMinutes !== 1 ? 's' : ''}` : 
+            `${todayMinutes} minute${todayMinutes !== 1 ? 's' : ''}`;
+        
+        const sevenDaysAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+        const recentSessions = babyData.sleepSessions.filter(s => s.endTime >= sevenDaysAgo);
+        
+        let totalSleep = 0;
+        recentSessions.forEach(s => {
+            totalSleep += (s.endTime - s.startTime);
+        });
+        
+        const avgDaily = totalSleep / 7;
+        const avgHours = Math.floor(avgDaily / (60 * 60 * 1000));
+        const avgMinutes = Math.floor((avgDaily % (60 * 60 * 1000)) / (60 * 1000));
+        
+        avgSleep.textContent = 
+            avgHours > 0 ? `${avgHours} hour${avgHours !== 1 ? 's' : ''} ${avgMinutes} minute${avgMinutes !== 1 ? 's' : ''}` : 
+            `${avgMinutes} minute${avgMinutes !== 1 ? 's' : ''}`;
+        
+        const naps = babyData.sleepSessions.filter(s => s.type === 'nap');
+        if (naps.length > 0) {
+            const lastNap = naps.reduce((latest, current) => 
+                current.endTime > latest.endTime ? current : latest
+            );
+            
+            const duration = lastNap.endTime - lastNap.startTime;
+            const hours = Math.floor(duration / (60 * 60 * 1000));
+            const minutes = Math.floor((duration % (60 * 60 * 1000)) / (60 * 1000));
+            
+            lastNapDuration.textContent = 
+                hours > 0 ? `${hours} hour${hours !== 1 ? 's' : ''} ${minutes} minute${minutes !== 1 ? 's' : ''}` : 
+                `${minutes} minute${minutes !== 1 ? 's' : ''}`;
+        } else {
+            lastNapDuration.textContent = 'No data';
+        }
+    }
+    
+    // Helper Functions
+    function formatTime(date) {
+        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+    
+    function formatDate(date) {
+        return date.toLocaleDateString();
+    }
+    
+    function getReactionEmoji(reaction) {
+        switch (reaction) {
+            case 'liked': return '😊';
+            case 'neutral': return '😐';
+            case 'disliked': return '😞';
+            case 'allergy': return '⚠️';
+            default: return '';
+        }
+    }
+    
+    // Chart Initialization
+    function initCharts() {
+        // Feeding Chart
+        const feedingCtx = document.getElementById('feedingChart').getContext('2d');
+        feedingChart = new Chart(feedingCtx, {
+            type: 'bar',
+            data: {
+                labels: ['12am', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm'],
+                datasets: [{
+                    label: 'Feedings (ml)',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(110, 142, 251, 0.7)',
+                    borderColor: 'rgba(110, 142, 251, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Amount (ml)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time of Day'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Sleep Chart
+        const sleepCtx = document.getElementById('sleepChart').getContext('2d');
+        sleepChart = new Chart(sleepCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Sleep Duration (hours)',
+                    data: [0, 0, 0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(167, 119, 227, 0.2)',
+                    borderColor: 'rgba(167, 119, 227, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Hours'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Day of Week'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Weight Chart
+        const weightCtx = document.getElementById('weightChart').getContext('2d');
+        weightChart = new Chart(weightCtx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Weight (kg)',
+                    data: [],
+                    backgroundColor: 'rgba(29, 209, 161, 0.2)',
+                    borderColor: 'rgba(29, 209, 161, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Weight (kg)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Height Chart
+        const heightCtx = document.getElementById('heightChart').getContext('2d');
+        heightChart = new Chart(heightCtx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Height (cm)',
+                    data: [],
+                    backgroundColor: 'rgba(254, 202, 87, 0.2)',
+                    borderColor: 'rgba(254, 202, 87, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Height (cm)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    }
+                }
+            }
+        });
+        
+        updateCharts();
+    }
+    
+    function updateCharts() {
+        // Update Feeding Chart
+        if (babyData.feedings.length > 0) {
+            const feedingData = [0, 0, 0, 0, 0, 0, 0, 0];
+            
+            babyData.feedings.forEach(f => {
+                const hour = f.time.getHours();
+                let slot;
+                
+                if (hour >= 0 && hour < 3) slot = 0;
+                else if (hour >= 3 && hour < 6) slot = 1;
+                else if (hour >= 6 && hour < 9) slot = 2;
+                else if (hour >= 9 && hour < 12) slot = 3;
+                else if (hour >= 12 && hour < 15) slot = 4;
+                else if (hour >= 15 && hour < 18) slot = 5;
+                else if (hour >= 18 && hour < 21) slot = 6;
+                else slot = 7;
+                
+                feedingData[slot] += f.amount;
+            });
+            
+            feedingChart.data.datasets[0].data = feedingData;
+            feedingChart.update();
+        }
+        
+        // Update Sleep Chart
+        if (babyData.sleepSessions.length > 0) {
+            const sleepData = [0, 0, 0, 0, 0, 0, 0];
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            
+            babyData.sleepSessions.forEach(s => {
+                const day = s.startTime.getDay();
+                const duration = (s.endTime - s.startTime) / (60 * 60 * 1000);
+                sleepData[day] += duration;
+            });
+            
+            // Reorder to start with Monday
+            const reorderedData = [...sleepData.slice(1), sleepData[0]];
+            const reorderedLabels = [...days.slice(1), days[0]];
+            
+            sleepChart.data.labels = reorderedLabels;
+            sleepChart.data.datasets[0].data = reorderedData;
+            sleepChart.update();
+        }
+        
+        // Update Growth Charts
+        if (babyData.growthRecords.length > 0) {
+            const sortedRecords = [...babyData.growthRecords].sort((a, b) => a.date - b.date);
+            
+            weightChart.data.labels = sortedRecords.map(r => formatDate(r.date));
+            weightChart.data.datasets[0].data = sortedRecords.map(r => r.weight);
+            weightChart.update();
+            
+            heightChart.data.labels = sortedRecords.map(r => formatDate(r.date));
+            heightChart.data.datasets[0].data = sortedRecords.map(r => r.height);
+            heightChart.update();
+        }
+    }
+});
