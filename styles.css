@@ -1,4 +1,4 @@
-/* General Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +16,6 @@ body {
     display: none !important;
 }
 
-/* Login Page Styles */
 .login-container {
     display: flex;
     min-height: 100vh;
@@ -155,7 +154,6 @@ body {
     background-color: #e0e0e0;
 }
 
-/* Baby Animation */
 .baby-animation {
     position: relative;
     width: 150px;
@@ -230,7 +228,6 @@ body {
     }
 }
 
-/* Dashboard Styles */
 .dashboard {
     display: flex;
     flex-direction: column;
@@ -309,8 +306,6 @@ nav ul li i {
     margin-right: 0.5rem;
     font-weight: 600;
 }
-
-/* Main Content */
 main {
     flex: 1;
     padding: 2rem;
@@ -325,7 +320,6 @@ main {
     display: block;
 }
 
-/* Dashboard Page */
 .welcome-banner {
     background: linear-gradient(135deg, #6e8efb, #a777e3);
     color: white;
@@ -496,7 +490,6 @@ td i:hover {
     color: #333;
 }
 
-/* Sleep Page */
 .sleep-actions {
     display: flex;
     gap: 1rem;
@@ -610,8 +603,6 @@ td i:hover {
     background-color: #ff6b6b;
     color: white;
 }
-
-/* Growth Page */
 .growth-metrics {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -722,8 +713,6 @@ td i:hover {
     background-color: #f0f0f0;
     color: #777;
 }
-
-/* Contact Page */
 .contact-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -826,8 +815,6 @@ td i:hover {
 .btn-submit:hover {
     background-color: #5a7bf0;
 }
-
-/* Chatbot Widget */
 .chatbot-widget {
     position: fixed;
     bottom: 20px;
@@ -956,8 +943,6 @@ td i:hover {
     justify-content: center;
     align-items: center;
 }
-
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -1000,7 +985,6 @@ td i:hover {
     color: #555;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
     .login-container {
         flex-direction: column;
