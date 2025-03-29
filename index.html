@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyTrack - Track Your Baby's Nutrition & Sleep</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <!-- Interactive Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-left">
+            <div class="baby-animation">
+                <div class="pacifier"></div>
+                <div class="baby-face">
+                    <div class="eyes">
+                        <div class="eye left-eye"></div>
+                        <div class="eye right-eye"></div>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+            <h1>Welcome to TinyTrack</h1>
+            <p>Track your baby's nutrition, sleep, and growth all in one place!</p>
+        </div>
+        <div class="login-right">
+            <div class="login-form">
+                <h2>Login or Sign Up</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="btn-login">Login</button>
+                    <button type="button" class="btn-signup" id="showSignup">Sign Up</button>
+                </form>
+                
+                <form id="signupForm" class="hidden">
+                    <div class="form-group">
+                        <label for="signupName">Parent's Name</label>
+                        <input type="text" id="signupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="babyName">Baby's Name</label>
+                        <input type="text" id="babyName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="babyDOB">Baby's Date of Birth</label>
+                        <input type="date" id="babyDOB" required>
+                    </div>
+                    <button type="submit" class="btn-signup">Create Account</button>
+                    <button type="button" class="btn-back" id="showLogin">Back to Login</button>
+                </form>
+                
+                <div class="social-login">
+                    <p>Or login with:</p>
+                    <div class="social-icons">
+                        <button class="social-btn google"><i class="fab fa-google"></i></button>
+                        <button class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                        <button class="social-btn apple"><i class="fab fa-apple"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard (hidden until login) -->
+    <div class="dashboard hidden" id="dashboard">
+        <header>
+            <div class="header-left">
+                <h1><i class="fas fa-baby"></i> TinyTrack</h1>
+                <nav>
+                    <ul>
+                        <li class="active" data-page="dashboard"><i class="fas fa-home"></i> Dashboard</li>
+                        <li data-page="nutrition"><i class="fas fa-utensils"></i> Nutrition</li>
+                        <li data-page="sleep"><i class="fas fa-moon"></i> Sleep</li>
+                        <li data-page="growth"><i class="fas fa-chart-line"></i> Growth</li>
+                        <li data-page="contact"><i class="fas fa-envelope"></i> Contact Us</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="user-profile">
+                    <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                    <span class="username">Parent User</span>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="page active" id="dashboardPage">
+                <div class="welcome-banner">
+                    <h2>Welcome back!</h2>
+                    <p>Track your baby's daily activities and monitor their development.</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card feeding">
+                        <h3>Last Feeding</h3>
+                        <p class="stat-value" id="lastFeedingTime">No data</p>
+                        <button class="btn-add" id="addFeedingBtn"><i class="fas fa-plus"></i> Log Feeding</button>
+                    </div>
+                    <div class="stat-card sleep">
+                        <h3>Last Nap</h3>
+                        <p class="stat-value" id="lastNapTime">No data</p>
+                        <button class="btn-add" id="addSleepBtn"><i class="fas fa-plus"></i> Log Sleep</button>
+                    </div>
+                    <div class="stat-card diaper">
+                        <h3>Last Diaper Change</h3>
+                        <p class="stat-value">1 hour ago</p>
+                        <button class="btn-add"><i class="fas fa-plus"></i> Log Diaper</button>
+                    </div>
+                    <div class="stat-card growth">
+                        <h3>Growth Progress</h3>
+                        <div class="growth-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                        <p>75% of milestones reached</p>
+                    </div>
+                </div>
+                
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Feeding Schedule</h3>
+                        <canvas id="feedingChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Sleep Patterns</h3>
+                        <canvas id="sleepChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page" id="nutritionPage">
+                <h2>Nutrition Tracker</h2>
+                <div class="nutrition-actions">
+                    <button class="btn-primary" id="addBottleBtn"><i class="fas fa-bottle"></i> Bottle Feeding</button>
+                    <button class="btn-primary" id="addSolidFoodBtn"><i class="fas fa-utensils"></i> Solid Foods</button>
+                    <button class="btn-primary" id="addVitaminBtn"><i class="fas fa-prescription-bottle-alt"></i> Vitamins/Medication</button>
+                </div>
+                
+                <div class="nutrition-history">
+                    <h3>Today's Nutrition</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="nutritionTableBody">
+                            <!-- Nutrition data will be inserted here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="page" id="sleepPage">
+                <h2>Sleep Tracker</h2>
+                <div class="sleep-actions">
+                    <button class="btn-primary" id="startNapBtn"><i class="fas fa-bed"></i> Start Nap</button>
+                    <button class="btn-primary" id="startNightSleepBtn"><i class="fas fa-moon"></i> Start Night Sleep</button>
+                    <button class="btn-primary" id="manualSleepEntryBtn"><i class="fas fa-stopwatch"></i> Manual Entry</button>
+                </div>
+                
+                <div class="sleep-stats">
+                    <div class="sleep-stat">
+                        <h3>Today's Sleep</h3>
+                        <p class="stat-value" id="todaySleep">0 hours</p>
+                    </div>
+                    <div class="sleep-stat">
+                        <h3>Average Daily Sleep</h3>
+                        <p class="stat-value" id="avgSleep">0 hours</p>
+                    </div>
+                    <div class="sleep-stat">
+                        <h3>Last Nap Duration</h3>
+                        <p class="stat-value" id="lastNapDuration">No data</p>
+                    </div>
+                </div>
+                
+                <div class="sleep-history">
+                    <h3>Sleep History</h3>
+                    <div class="timeline" id="sleepTimeline">
+                        <!-- Sleep data will be inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page" id="growthPage">
+                <h2>Growth Tracker</h2>
+                <div class="growth-metrics">
+                    <div class="metric-card">
+                        <h3>Weight</h3>
+                        <div class="metric-value">7.5 kg</div>
+                        <div class="metric-percentile">75th percentile</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Height</h3>
+                        <div class="metric-value">68 cm</div>
+                        <div class="metric-percentile">60th percentile</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Head Circumference</h3>
+                        <div class="metric-value">43 cm</div>
+                        <div class="metric-percentile">80th percentile</div>
+                    </div>
+                </div>
+                
+                <div class="growth-charts">
+                    <div class="chart-container">
+                        <h3>Weight Progress</h3>
+                        <canvas id="weightChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Height Progress</h3>
+                        <canvas id="heightChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="milestones">
+                    <h3>Developmental Milestones</h3>
+                    <div class="milestone-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                        <div class="progress-text">75% of milestones reached</div>
+                    </div>
+                    
+                    <div class="milestone-list">
+                        <div class="milestone-item completed">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Holds head up</span>
+                        </div>
+                        <div class="milestone-item completed">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Rolls over</span>
+                        </div>
+                        <div class="milestone-item in-progress">
+                            <i class="fas fa-spinner"></i>
+                            <span>Sits without support</span>
+                        </div>
+                        <div class="milestone-item pending">
+                            <i class="far fa-circle"></i>
+                            <span>Crawls</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="page" id="contactPage">
+                <h2>Contact Us</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>Have questions or feedback? We'd love to hear from you!</p>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@TinyTrack.com</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (800) 123-4567</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Parenting Lane, Baby City, BC 12345</span>
+                        </div>
+                        
+                        <div class="social-links">
+                            <h4>Follow Us</h4>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="contactName">Your Name</label>
+                                <input type="text" id="contactName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email</label>
+                                <input type="email" id="contactEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactSubject">Subject</label>
+                                <input type="text" id="contactSubject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Message</label>
+                                <textarea id="contactMessage" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="bottleModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Log Bottle Feeding</h2>
+            <form id="bottleForm">
+                <div class="form-group">
+                    <label for="bottleTime">Time</label>
+                    <input type="datetime-local" id="bottleTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="bottleAmount">Amount (ml)</label>
+                    <input type="number" id="bottleAmount" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="bottleType">Milk Type</label>
+                    <select id="bottleType" required>
+                        <option value="breast">Breast Milk</option>
+                        <option value="formula">Formula</option>
+                        <option value="mixed">Mixed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bottleNotes">Notes</label>
+                    <textarea id="bottleNotes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="solidFoodModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Log Solid Food</h2>
+            <form id="solidFoodForm">
+                <div class="form-group">
+                    <label for="foodTime">Time</label>
+                    <input type="datetime-local" id="foodTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="foodType">Food Type</label>
+                    <input type="text" id="foodType" placeholder="e.g., Banana, Rice cereal" required>
+                </div>
+                <div class="form-group">
+                    <label for="foodAmount">Amount</label>
+                    <input type="text" id="foodAmount" placeholder="e.g., 1/2 cup, 2 tbsp" required>
+                </div>
+                <div class="form-group">
+                    <label for="foodReaction">Baby's Reaction</label>
+                    <select id="foodReaction">
+                        <option value="liked">Liked it</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="disliked">Disliked it</option>
+                        <option value="allergy">Allergic reaction</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="foodNotes">Notes</label>
+                    <textarea id="foodNotes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="sleepModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Log Sleep</h2>
+            <form id="sleepForm">
+                <div class="form-group">
+                    <label for="sleepType">Sleep Type</label>
+                    <select id="sleepType" required>
+                        <option value="nap">Nap</option>
+                        <option value="night">Night Sleep</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sleepStart">Start Time</label>
+                    <input type="datetime-local" id="sleepStart" required>
+                </div>
+                <div class="form-group">
+                    <label for="sleepEnd">End Time</label>
+                    <input type="datetime-local" id="sleepEnd" required>
+                </div>
+                <div class="form-group">
+                    <label for="sleepQuality">Sleep Quality</label>
+                    <select id="sleepQuality">
+                        <option value="good">Good</option>
+                        <option value="restless">Restless</option>
+                        <option value="interrupted">Interrupted</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sleepNotes">Notes</label>
+                    <textarea id="sleepNotes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <i class="fas fa-baby"></i>
+            </div>
+            <h3>TinyTrack Assistant</h3>
+            <button class="chatbot-close" id="closeChatbot"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <p>👋 Hi there! I'm TinyTrack, your parenting assistant. How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Type your question...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="toggleChatbot">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+</body>
+</html>
