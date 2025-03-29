@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
     const loginPage = document.getElementById('loginPage');
     const dashboard = document.getElementById('dashboard');
     const loginForm = document.getElementById('loginForm');
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatbotInput = document.getElementById('chatbotInput');
     const sendMessageBtn = document.getElementById('sendMessage');
     
-    // Modal Elements
     const bottleModal = document.getElementById('bottleModal');
     const solidFoodModal = document.getElementById('solidFoodModal');
     const sleepModal = document.getElementById('sleepModal');
@@ -24,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const sleepForm = document.getElementById('sleepForm');
     const closeModalBtns = document.querySelectorAll('.close-modal');
     
-    // Button Elements
     const addBottleBtn = document.getElementById('addBottleBtn');
     const addSolidFoodBtn = document.getElementById('addSolidFoodBtn');
     const addVitaminBtn = document.getElementById('addVitaminBtn');
@@ -33,8 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const manualSleepEntryBtn = document.getElementById('manualSleepEntryBtn');
     const addFeedingBtn = document.getElementById('addFeedingBtn');
     const addSleepBtn = document.getElementById('addSleepBtn');
-    
-    // Data Display Elements
     const nutritionTableBody = document.getElementById('nutritionTableBody');
     const sleepTimeline = document.getElementById('sleepTimeline');
     const lastFeedingTime = document.getElementById('lastFeedingTime');
@@ -43,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const avgSleep = document.getElementById('avgSleep');
     const lastNapDuration = document.getElementById('lastNapDuration');
     
-    // Data Storage
     let babyData = {
         name: 'Baby Name',
         dob: new Date(),
@@ -52,15 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
         sleepSessions: [],
         growthRecords: []
     };
-    
-    // Chart Instances
     let feedingChart, sleepChart, weightChart, heightChart;
     
-    // Initialize the app
     initApp();
     
     function initApp() {
-        // Check if user is logged in
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         
         if (isLoggedIn) {
@@ -73,8 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
             loginPage.classList.remove('hidden');
             dashboard.classList.add('hidden');
         }
-        
-        // Load sample data if empty
         if (babyData.feedings.length === 0 && babyData.sleepSessions.length === 0) {
             loadSampleData();
         }
@@ -84,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const savedData = localStorage.getItem('babyData');
         if (savedData) {
             babyData = JSON.parse(savedData);
-            // Convert string dates back to Date objects
             babyData.feedings.forEach(f => f.time = new Date(f.time));
             babyData.solidFoods.forEach(f => f.time = new Date(f.time));
             babyData.sleepSessions.forEach(s => {
@@ -100,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function loadSampleData() {
-        // Sample feeding data
         const now = new Date();
         const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000);
         const threeHoursAgo = new Date(now.getTime() - 3 * 60 * 60 * 1000);
@@ -110,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
             { id: generateId(), type: 'bottle', time: threeHoursAgo, amount: 150, milkType: 'formula', notes: 'Left 20ml' }
         ];
         
-        // Sample solid food data
         const todayLunch = new Date(now);
         todayLunch.setHours(12, 15, 0, 0);
         
@@ -118,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
             { id: generateId(), time: todayLunch, foodType: 'Sweet potatoes', amount: '1/2 cup', reaction: 'liked', notes: 'First time trying' }
         ];
         
-        // Sample sleep data
         const nap1Start = new Date(now);
         nap1Start.setHours(9, 0, 0, 0);
         const nap1End = new Date(nap1Start.getTime() + 75 * 60 * 1000);
@@ -132,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
             { id: generateId(), type: 'nap', startTime: nap2Start, endTime: nap2End, quality: 'restless', notes: 'Woke up once but went back to sleep' }
         ];
         
-        // Sample growth data
         babyData.growthRecords = [
             { id: generateId(), date: new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000), weight: 6.8, height: 65, headCircumference: 42 },
             { id: generateId(), date: now, weight: 7.5, height: 68, headCircumference: 43 }
@@ -144,8 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function generateId() {
         return Math.random().toString(36).substr(2, 9);
     }
-    
-    // Login/Signup Functionality
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         localStorage.setItem('isLoggedIn', 'true');
@@ -185,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
         loginForm.classList.remove('hidden');
     });
     
-    // Navigation
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navLinks.forEach(l => l.classList.remove('active'));
@@ -211,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Chatbot Functionality
     toggleChatbotBtn.addEventListener('click', function() {
         chatbotWidget.classList.toggle('active');
     });
@@ -261,8 +240,6 @@ document.addEventListener('DOMContentLoaded', function() {
             sendMessageBtn.click();
         }
     });
-    
-    // Modal Functionality
     function openModal(modal) {
         modal.classList.add('active');
     }
@@ -284,7 +261,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Add Bottle Feeding
     addBottleBtn.addEventListener('click', function() {
         const bottleTime = document.getElementById('bottleTime');
         bottleTime.value = new Date().toISOString().slice(0, 16);
@@ -318,8 +294,6 @@ document.addEventListener('DOMContentLoaded', function() {
         this.reset();
         closeModal(bottleModal);
     });
-    
-    // Add Solid Food
     addSolidFoodBtn.addEventListener('click', function() {
         const foodTime = document.getElementById('foodTime');
         foodTime.value = new Date().toISOString().slice(0, 16);
@@ -354,8 +328,6 @@ document.addEventListener('DOMContentLoaded', function() {
         this.reset();
         closeModal(solidFoodModal);
     });
-    
-    // Add Sleep Session
     manualSleepEntryBtn.addEventListener('click', function() {
         const now = new Date();
         const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
@@ -396,7 +368,6 @@ document.addEventListener('DOMContentLoaded', function() {
         closeModal(sleepModal);
     });
     
-    // Quick add buttons from dashboard
     addFeedingBtn.addEventListener('click', function() {
         addBottleBtn.click();
     });
@@ -404,8 +375,6 @@ document.addEventListener('DOMContentLoaded', function() {
     addSleepBtn.addEventListener('click', function() {
         manualSleepEntryBtn.click();
     });
-    
-    // Data Display Functions
     function updateNutritionTable() {
         nutritionTableBody.innerHTML = '';
         
@@ -573,7 +542,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateDashboardStats() {
-        // Last feeding time
         if (babyData.feedings.length > 0) {
             const lastFeeding = babyData.feedings.reduce((latest, current) => 
                 current.time > latest.time ? current : latest
@@ -589,7 +557,6 @@ document.addEventListener('DOMContentLoaded', function() {
             lastFeedingTime.textContent = 'No data';
         }
         
-        // Last nap time
         const naps = babyData.sleepSessions.filter(s => s.type === 'nap');
         if (naps.length > 0) {
             const lastNap = naps.reduce((latest, current) => 
@@ -660,8 +627,6 @@ document.addEventListener('DOMContentLoaded', function() {
             lastNapDuration.textContent = 'No data';
         }
     }
-    
-    // Helper Functions
     function formatTime(date) {
         return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
@@ -679,10 +644,7 @@ document.addEventListener('DOMContentLoaded', function() {
             default: return '';
         }
     }
-    
-    // Chart Initialization
     function initCharts() {
-        // Feeding Chart
         const feedingCtx = document.getElementById('feedingChart').getContext('2d');
         feedingChart = new Chart(feedingCtx, {
             type: 'bar',
@@ -715,8 +677,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-        
-        // Sleep Chart
         const sleepCtx = document.getElementById('sleepChart').getContext('2d');
         sleepChart = new Chart(sleepCtx, {
             type: 'line',
@@ -752,7 +712,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Weight Chart
         const weightCtx = document.getElementById('weightChart').getContext('2d');
         weightChart = new Chart(weightCtx, {
             type: 'line',
@@ -788,7 +747,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Height Chart
         const heightCtx = document.getElementById('heightChart').getContext('2d');
         heightChart = new Chart(heightCtx, {
             type: 'line',
@@ -828,7 +786,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateCharts() {
-        // Update Feeding Chart
         if (babyData.feedings.length > 0) {
             const feedingData = [0, 0, 0, 0, 0, 0, 0, 0];
             
@@ -851,8 +808,6 @@ document.addEventListener('DOMContentLoaded', function() {
             feedingChart.data.datasets[0].data = feedingData;
             feedingChart.update();
         }
-        
-        // Update Sleep Chart
         if (babyData.sleepSessions.length > 0) {
             const sleepData = [0, 0, 0, 0, 0, 0, 0];
             const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -862,8 +817,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const duration = (s.endTime - s.startTime) / (60 * 60 * 1000);
                 sleepData[day] += duration;
             });
-            
-            // Reorder to start with Monday
             const reorderedData = [...sleepData.slice(1), sleepData[0]];
             const reorderedLabels = [...days.slice(1), days[0]];
             
@@ -871,8 +824,6 @@ document.addEventListener('DOMContentLoaded', function() {
             sleepChart.data.datasets[0].data = reorderedData;
             sleepChart.update();
         }
-        
-        // Update Growth Charts
         if (babyData.growthRecords.length > 0) {
             const sortedRecords = [...babyData.growthRecords].sort((a, b) => a.date - b.date);
             
