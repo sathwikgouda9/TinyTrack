@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
+    <!-- Interactive Login Page -->
     <div class="login-container" id="loginPage">
         <div class="login-left">
             <div class="baby-animation">
@@ -77,6 +79,7 @@
         </div>
     </div>
 
+    <!-- Main Dashboard (hidden until login) -->
     <div class="dashboard hidden" id="dashboard">
         <header>
             <div class="header-left">
@@ -87,17 +90,35 @@
                         <li data-page="nutrition"><i class="fas fa-utensils"></i> Nutrition</li>
                         <li data-page="sleep"><i class="fas fa-moon"></i> Sleep</li>
                         <li data-page="growth"><i class="fas fa-chart-line"></i> Growth</li>
+                        <li id="chatbotTrigger">
+                            <i class="fas fa-robot"></i> Baby Assistant
+                          </li>
                         <li data-page="contact"><i class="fas fa-envelope"></i> Contact Us</li>
                     </ul>
                 </nav>
             </div>
             <div class="header-right">
                 <div class="user-profile">
-                    <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
-                    <span class="username">Parent User</span>
-                    <i class="fas fa-caret-down"></i>
+                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDBDNS4zNzMgMCAwIDUuMzczIDAgMTJzNS4zNzMgMTIgMTIgMTIgMTItNS4zNzMgMTItMTJTMjguNjI3IDAgMTIgMHptMCA1YzEuNjUgMCAzIDIuMjggMyA0cy0xLjM1IDQtMyA0LTMtMi4yOC0zLTRzMS4zNS00IDMtNHptMCAxMGMtMi4zNSAwLTcgMS4xNy03IDMuNWgwQzUgMTkuNTUgNS41NSAyMCA2LjUgMjBoMTFjLjk1IDAgMS41LS40NSAxLjUtMS41aDBDMTkgMTYuMTcgMTQuMzUgMTUgMTIgMTV6IiBmaWxsPSIjNmU4ZWZiIi8+PC9zdmc+" 
+                       alt="Profile" class="profile-pic">
+                  <span class="username">Parent User</span>
+                  <i class="fas fa-caret-down"></i>
+                  <div class="profile-dropdown">
+                    <div class="profile-info">
+                      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDBDNS4zNzMgMCAwIDUuMzczIDAgMTJzNS4zNzMgMTIgMTIgMTIgMTItNS4zNzMgMTItMTJTMjguNjI3IDAgMTIgMHptMCA1YzEuNjUgMCAzIDIuMjggMyA0cy0xLjM1IDQtMyA0LTMtMi4yOC0zLTRzMS4zNS00IDMtNHptMCAxMGMtMi4zNSAwLTcgMS4xNy03IDMuNWgwQzUgMTkuNTUgNS41NSAyMCA2LjUgMjBoMTFjLjk1IDAgMS41LS40NSAxLjUtMS41aDBDMTkgMTYuMTcgMTQuMzUgMTUgMTIgMTV6IiBmaWxsPSIjNmU4ZWZiIi8+PC9zdmc+" 
+                           alt="Profile" class="profile-pic">
+                      <div class="profile-details">
+                        <h3 id="profile-parent-name">Parent Name</h3>
+                        <p id="profile-baby-name">Baby's Name</p>
+                      </div>
+                    </div>
+                    <button class="btn-logout" id="logoutBtn">
+                      <i class="fas fa-sign-out-alt"></i>
+                      Log Out
+                    </button>
+                  </div>
                 </div>
-            </div>
+              </div>
         </header>
 
         <main>
@@ -165,6 +186,7 @@
                             </tr>
                         </thead>
                         <tbody id="nutritionTableBody">
+                            <!-- Nutrition data will be inserted here by JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -196,6 +218,7 @@
                 <div class="sleep-history">
                     <h3>Sleep History</h3>
                     <div class="timeline" id="sleepTimeline">
+                        <!-- Sleep data will be inserted here by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -270,15 +293,15 @@
                         
                         <div class="contact-method">
                             <i class="fas fa-envelope"></i>
-                            <span>support@TinyTrack.com</span>
+                            <span>TinyTrack123@gmail.com</span>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-phone"></i>
-                            <span>+1 (800) 123-4567</span>
+                            <span>+91 12345785</span>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Parenting Lane, Baby City, BC 12345</span>
+                            <span>Phagwara</span>
                         </div>
                         
                         <div class="social-links">
@@ -319,6 +342,7 @@
         </main>
     </div>
 
+    <!-- Modals -->
     <div class="modal" id="bottleModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -419,31 +443,34 @@
                 <button type="submit" class="btn-submit">Save</button>
             </form>
         </div>
-    </div>
-    <div class="chatbot-widget" id="chatbotWidget">
-        <div class="chatbot-header">
-            <div class="chatbot-avatar">
-                <i class="fas fa-baby"></i>
-            </div>
-            <h3>TinyTrack Assistant</h3>
-            <button class="chatbot-close" id="closeChatbot"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <div class="message bot-message">
-                <p>👋 Hi there! I'm TinyTrack, your parenting assistant. How can I help you today?</p>
-            </div>
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="chatbotInput" placeholder="Type your question...">
-            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-    <button class="chatbot-toggle" id="toggleChatbot">
-        <i class="fas fa-comment-dots"></i>
-    </button>
+        <!-- Added chatbot container in correct position -->
 
+  
+  <!-- Fixed BotPress integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+  <script>
+    window.botpressWebChat.init({
+        "composerPlaceholder": "Chat with TinyTrack Assistant",
+        "botConversationDescription": "Baby care expert assistant",
+        "botId": "a6e32b3a-0a5e-4c4a-8b2c-5bb4b8549a9c",
+        "hostUrl": "https://cdn.botpress.cloud/webchat/v2.2",
+        "messagingUrl": "https://messaging.botpress.cloud",
+        "clientId": "a6e32b3a-0a5e-4c4a-8b2c-5bb4b8549a9c",
+        "lazySocket": true,
+        "themeName": "prism",
+        "frontendVersion": "v2.2",
+        "showPoweredBy": false,
+        "theme": "prism",
+        "themeColor": "#6e8efb"
+    });
+  </script>
+    
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/03/29/04/20250329045108-E4OCUZYS.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="script.js"></script>
+    
 </body>
 </html>
